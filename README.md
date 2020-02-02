@@ -25,7 +25,7 @@
   1. v-model在自定义组件上的使用
 - switch组件
   1.  关于对一些组件结构的思考
-  2. 基于vue中radio与element-ui设计组合成一道数学题
+  2.  基于vue中radio与element-ui设计组合成一道数学题
 - radio组件
   1. v-model与计算属性之间的亲密关系
 - radio-group组件
@@ -100,21 +100,21 @@
   |  title  | dialog的标题( dialog的标题也可以使用template的形式传入一个标签或者只传入title参数 ) |
   | footer  |               dialog的底部操作区               |
 
-- 支持的参数一览
+### 2.2 支持的参数一览
 
-  |   参数名   |         参数描述          |       参数类型       |  默认值  |
-  | :-----: | :-------------------: | :--------------: | :---: |
-  |  title  |         对话框标题         |       字符串        |  标题   |
-  |  width  |        对话框的宽度         | 字符串(符合width的值即可) |  30%  |
-  |   top   |       对话框与顶部的距离       |  字符串(符合top的值即可)  | 15vh  |
-  | visible | 是否显示dialog(支持sync修饰符) |       布尔值        | false |
+|   参数名   |         参数描述          |       参数类型       |  默认值  |
+| :-----: | :-------------------: | :--------------: | :---: |
+|  title  |         对话框标题         |       字符串        |  标题   |
+|  width  |        对话框的宽度         | 字符串(符合width的值即可) |  30%  |
+|   top   |       对话框与顶部的距离       |  字符串(符合top的值即可)  | 15vh  |
+| visible | 是否显示dialog(支持sync修饰符) |       布尔值        | false |
 
-- 支持的钩子事件
+### 2.3 支持的钩子事件
 
-  |    事件名称    |        说明         |
-  | :--------: | :---------------: |
-  | afterEnter | Dialog 打开动画结束时的回调 |
-  | afterLeave | Dialog 关闭动画结束时的回调 |
+|    事件名称    |        说明         |
+| :--------: | :---------------: |
+| afterEnter | Dialog 打开动画结束时的回调 |
+| afterLeave | Dialog 关闭动画结束时的回调 |
 
 
 
@@ -189,26 +189,26 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 
   >  input组件的样式覆盖原有样式，添加了原本input组件的一些属性。并且在组件标签上提供v-model进行双向数据绑定。
 
-- input 组件的参数支持
+#### 3.2   input 组件的参数支持
 
-  |     参数名称      |     参数描述     |  参数类型   |  默认值  |
-  | :-----------: | :----------: | :-----: | :---: |
-  |  placeholder  |     占位符      | string  |  ''   |
-  |     type      |    输入框类型     | string  | text  |
-  |   disabled    |      禁用      | Boolean | false |
-  |   clearable   |   是否显示清空按钮   | Boolean | false |
-  | show-password | 是否显示切换密码显示按钮 | Boolean | false |
-  |     name      | 表单元素的name属性  | string  |  ‘’   |
+|     参数名称      |     参数描述     |  参数类型   |  默认值  |
+| :-----------: | :----------: | :-----: | :---: |
+|  placeholder  |     占位符      | string  |  ''   |
+|     type      |    输入框类型     | string  | text  |
+|   disabled    |      禁用      | Boolean | false |
+|   clearable   |   是否显示清空按钮   | Boolean | false |
+| show-password | 是否显示切换密码显示按钮 | Boolean | false |
+|     name      | 表单元素的name属性  | string  |  ‘’   |
 
-- input组件的事件支持
+#### 3.3   input 组件的事件支持
 
-  |  事件名称  |  事件描述  |
-  | :----: | :----: |
-  |  blur  | 失去焦点事件 |
-  | change | 内容改变事件 |
-  | focus  | 获取焦点事件 |
+|  事件名称  |  事件描述  |
+| :----: | :----: |
+|  blur  | 失去焦点事件 |
+| change | 内容改变事件 |
+| focus  | 获取焦点事件 |
 
-#### 3.2 在自定义组件上v-model的使用
+#### 3.4 在自定义组件上v-model的使用
 
 - v-model用于表单的双向数据绑定， 其实它是一个语法糖。其实它背后就做了两件事情
 
@@ -220,8 +220,6 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
     相当于
   <input v-bind:value="inputValue" v-on:input="inputValue = $event.target.value">
   ```
-
-  ​
 
 - 自定义组件上使用v-model， 应该有以下操作
 
@@ -236,7 +234,7 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
   ```
 
 
-#### 3.3  子组件数据控制的思想
+#### 3.5  子组件数据控制的思想
 
 - 父组件传进来的属性是不能改的，如果不能用分发事件的形式或者.sync的形式，则可以自定义一个布尔变量，根据条件控制此变量 && 父组件传进来的数据来 控制子组件中对应数据视图的显示。
 
@@ -246,6 +244,8 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 
 #### 4.1 基本结构
 
+​	主要用于状态的开关
+
 - switch的基本结构是label中 --> span 中 --> span 
 
   ```html
@@ -253,17 +253,23 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
     <span class="hm-switch__core">
       <span class="hm-switch__button"></span>
     </span>
+    <input
+        class="tp-switch__input"
+        type="checkbox"
+        ref="checkbox"
+        :name="name"
+      >
   </label>
   ```
 
-- 支持的参数一览
+#### 4.2 支持的参数一览
 
-  |     参数名称      |    参数描述    |  参数类型   |  默认值   |
-  | :-----------: | :--------: | :-----: | :----: |
-  |    v-model    |    双向绑定    | Boolean | false  |
-  |     name      |   name属性   | string  | 'text' |
-  |  activeColor  | 自定义的激活的颜色  | string  | dcdfe6 |
-  | inactiveColor | 自定义的不激活的颜色 | string  | 409eff |
+|     参数名称      |    参数描述    |  参数类型   |  默认值   |
+| :-----------: | :--------: | :-----: | :----: |
+|    v-model    |    双向绑定    | Boolean | false  |
+|     name      |   name属性   | string  | 'text' |
+|  activeColor  | 自定义的激活的颜色  | string  | dcdfe6 |
+| inactiveColor | 自定义的不激活的颜色 | string  | 409eff |
 
 - switch组件 通常在表单中使用，所以需要一个name属性。
 
@@ -315,12 +321,12 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 
 ### 5.2 如果要对v-model进行操作, 则计算属性是最好的选择
 
-- 支持的参数一览
+### 5.3 支持的参数一览
 
-  |  参数名字   |       参数描述       |       参数类型       | 默认值  |
-  | :-----: | :--------------: | :--------------: | :--: |
-  |  label  | 用于指定该radio的value | [String, Number] |  ''  |
-  | v-model |      用于双向绑定      | [String, Number] |  ''  |
+|  参数名字   |       参数描述       |       参数类型       | 默认值  |
+| :-----: | :--------------: | :--------------: | :--: |
+|  label  | 用于指定该radio的value | [String, Number] |  ''  |
+| v-model |      用于双向绑定      | [String, Number] |  ''  |
 
 ## 6. radio-group组件
 
@@ -365,6 +371,7 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 | v-model | 用于与radio的双向数据绑定 | [String, Number] |  ‘’  |
 
 - 即： 将tp-radio 的v-model 放到tp-radio-group上。
+  - 结： 至于点击之后的数据，则是vue内部处理了。
 
 ## 7. checkbox组件
 
@@ -381,9 +388,9 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 
 ## 8.checkbox-group组件
 
-### 8.1 与radio-group一致
+### 8.1 支持的参数
 
-- 支持的参数
+- 与radio-group一致
 
 |  参数名称   |        参数描述        | 参数类型  | 默认值  |
 | :-----: | :----------------: | :---: | :--: |
@@ -404,6 +411,15 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 </template>
 ```
 
+### 9.2 支持的参数
+
+- ​
+
+|    参数名称     |                   参数描述                   |  参数类型  | 默认值  |
+| :---------: | :--------------------------------------: | :----: | :--: |
+|    model    |                  表单数据对象                  | Object |  {}  |
+| label-width | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。 | String | 80px |
+
 ## 10. form-item组件
 
 ### 10.1 基本结构
@@ -419,3 +435,10 @@ title与footer使用插槽的形式来确定其结构，传入的width、top、v
 </template>
 ```
 
+### 10.2 支持的参数
+
+- ​
+
+| 参数名称  |   参数描述   |  参数类型  | 默认值  |
+| :---: | :------: | :----: | :--: |
+| label | 表单项对应的文字 | String |  ''  |
